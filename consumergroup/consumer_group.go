@@ -171,6 +171,10 @@ func JoinConsumerGroup(name string, topics []string, zookeeper []string, config 
 	return
 }
 
+func (cg *ConsumerGroup) Group() *kazoo.Consumergroup {
+	return cg.group
+}
+
 // Returns a channel that you can read to obtain events from Kafka to process.
 func (cg *ConsumerGroup) Messages() <-chan *sarama.ConsumerMessage {
 	return cg.messages
